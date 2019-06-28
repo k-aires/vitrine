@@ -1,8 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,500&display=swap');
+
+body {
+	font-family: Roboto;
+	font-weight: 300;
+}
 
 .showcase {
 	padding: 1%;
-	width: 98%;
+	width: 58%;
 }
 
 .showcase-box {
@@ -31,7 +36,7 @@
 	filter: grayscale(100%);
 	transition: filter 1s ease-in-out;
 	float: right;
-	vertical-align: middle;
+	vertical-align: -50%;
 }
 
 #arrowflip {
@@ -41,26 +46,50 @@
 
 .title {
 	color: #47789d;
-	font-family: Roboto;
 	background-image: url(assets/titlebar.png);
 	background-repeat: repeat no-repeat;
 	background-size: contain;
 	text-align: left;
 	padding: 5px;
-	font-weight: bold;
+	font-weight: 500;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	margin-bottom: 1%;
+	font-size: 120%;
 }
 
 .item {
 	background: none;
 	display: inline-block;
-	width: 50px;
-	height: 90px;
+	margin: 1%;
+	padding: 1%;
 }
 
 .item:hover {
 	background: linear-gradient(rgba(200,220,255,1) 20%, rgba(210,230,255,0.5) 60%, rgba(230,240,255,0.2) 80%, rgba(255,255,255,0.1) 100%);
+}
+
+.description {
+	text-decoration: none;
+	color: black;
+	display: block;
+}
+
+.description:hover {
+	text-decoration: underline;
+	color: #47789d;
+}
+
+.price {
+	display: inline-block;
+	font-weight: 500;
+}
+
+.payment {
+	color: red;
+}
+
+.oldprice {
+	font-size: 90%;
 }
