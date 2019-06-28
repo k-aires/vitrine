@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+.showcase {
+	padding: 1%;
+	width: 98%;
+}
+
+.showcase-box {
+	vertical-align: top;
+	display: inline-block;
+	padding: none;
+	margin: none;
+	height: 100%;
+	overflow: hidden;
+}
+
+#reference {
+	width: 23%;
+}
+
+#recommendation {
+	width: 75%;
+}
+
+.arrow:hover {
+	filter: none;
+	transition: filter 1s ease-in-out;
+}
+
+.arrow {
+	filter: grayscale(100%);
+	transition: filter 1s ease-in-out;
+	float: right;
+	vertical-align: middle;
+}
+
+#arrowflip {
+	transform: rotate(180deg);
+	float: left;
+}
+
+.title {
+	color: #47789d;
+	font-family: Roboto;
+	background-image: url(assets/titlebar.png);
+	background-repeat: repeat no-repeat;
+	background-size: contain;
+	text-align: left;
+	padding: 5px;
+	font-weight: bold;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin-bottom: 1%;
+}
+
+.item {
+	background: none;
+	display: inline-block;
+	width: 50px;
+	height: 90px;
+}
+
+.item:hover {
+	background: linear-gradient(rgba(200,220,255,1) 20%, rgba(210,230,255,0.5) 60%, rgba(230,240,255,0.2) 80%, rgba(255,255,255,0.1) 100%);
+}
