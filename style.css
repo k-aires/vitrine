@@ -1,30 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,500&display=swap');
 
-body {
+.showcase {
+	padding: 1%;
+	width: 58%;
 	font-family: Roboto;
 	font-weight: 300;
 }
 
-.showcase {
-	padding: 1%;
-	width: 58%;
-}
-
-.showcase-box {
-	vertical-align: top;
+.reference {
+	width: 20%;
 	display: inline-block;
-	padding: none;
-	margin: none;
-	height: 100%;
-	overflow: hidden;
+	float: left;
 }
 
-#reference {
-	width: 23%;
-}
-
-#recommendation {
-	width: 75%;
+.recommendation {
+	width: 73%;
+	display: inline-block;
+	float: right;
 }
 
 .arrow:hover {
@@ -36,7 +28,7 @@ body {
 	filter: grayscale(100%);
 	transition: filter 1s ease-in-out;
 	float: right;
-	vertical-align: -50%;
+	vertical-align: middle;
 }
 
 #arrowflip {
@@ -55,7 +47,6 @@ body {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	margin-bottom: 1%;
 	font-size: 120%;
 }
 
@@ -92,4 +83,10 @@ body {
 
 .oldprice {
 	font-size: 90%;
+}
+
+.carousel-wrapper {
+	overflow: hidden;
+	border-left: solid 1px #eee;
+	padding: 0.5%;
 }
