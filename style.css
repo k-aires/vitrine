@@ -33,17 +33,20 @@
 	transition: filter 1s ease-in-out;
 }
 
-.arrowbox {
+.arrowbox--right, .arrowbox--left {
 	z-index: 1000;
 	display: inline-block;
 	vertical-align: middle;
-	right: 0;
 	top: 30%;
 	position: absolute;
 	width: 5%;
 }
 
-#arrowflip {
+.arrowbox--right {
+	right: 0;
+}
+
+.arrowbox--left {
 	transform: rotate(180deg);
 	left: 0;
 }
@@ -119,6 +122,7 @@
 .carousel {
 	overflow: hidden;
 	width: 95%;
+	transform-style: preserve-3d;
 }
 
 .whitebox {

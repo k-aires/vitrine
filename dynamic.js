@@ -1,4 +1,6 @@
 window.onload = initialConfig();
+var carouselSize = 4;
+var buttonCount, carousel, recSize, recItems;
 
 function initialConfig() {
 	var url = "http://roberval.chaordicsystems.com/challenge/challenge.json?callback=X"
@@ -18,21 +20,18 @@ function initialConfig() {
 }
 
 function X(info) {
-	console.log(info.data.widget.size);
+	recSize = info.data.widget.size;
 	
 	var refContainer = document.getElementById("referenceContainer");
-	var refItem = info.data.reference.item;
+	refItem = info.data.reference.item;
 	refContainer.innerHTML = '<div class="item reference">' + itemHTML(refItem) + "</div>";
 
-	console.log("Reference loaded");
+	carousel = document.getElementById("recommendationCarousel");
+	recItems = info.data.recommendation;
+	buttonCount = 1;
+	setEventListeners();
 
-	var carousel = document.getElementById("recommendationCarousel");
-	var recItems = info.data.recommendation;
-	var recommendations = '';
-	for (var i = 0; i < info.data.widget.size; i++) {
-		recommendations = recommendations + '<div class="item">' + itemHTML(recItems[i]) + "</div>";
-	}
-	carousel.innerHTML = recommendations;
+	getRecommendations();
 }
 
 function itemHTML(refItem) {
@@ -42,4 +41,43 @@ function itemHTML(refItem) {
 	}
 	html = html + `<div class="payment">Por: <div class="price">${refItem.price}</div> <br> ${refItem.productInfo.paymentConditions}</div>`;
 	return html;
+}
+
+function getRecommendations() {
+	var size = buttonCount*carouselSize;
+	if (recSize < size) {
+		size = recSize;
+	}
+
+	var recommendations = '';
+	for (var i = (buttonCount-1)*carouselSize; i < size; i++) {
+		recommendations = recommendations + '<div class="item">' + itemHTML(recItems[i]) + "</div>";
+	}
+
+	carousel.innerHTML = recommendations;
+}
+
+function setEventListeners() {
+	document.getElementsByClassName("arrowbox--right")[0].addEventListener("click", moveNext);
+	document.getElementsByClassName("arrowbox--left")[0].addEventListener("click", movePrev);
+}
+
+function movePrev() {
+	if (buttonCount > 1) {
+		buttonCount--;
+	} else {
+		buttonCount = (recSize%carouselSize)+1;
+	}
+	console.log(buttonCount);
+	getRecommendations();
+}
+
+function moveNext() {
+	if (buttonCount*carouselSize < recSize) {
+		buttonCount++;
+	} else {
+		buttonCount = 1;
+	}
+	console.log(buttonCount);
+	getRecommendations();
 }
