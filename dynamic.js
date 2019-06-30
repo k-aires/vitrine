@@ -22,7 +22,7 @@ function X(info) {
 	
 	var refContainer = document.getElementById("referenceContainer");
 	var refItem = info.data.reference.item;
-	refContainer.innerHTML = itemHTML(refItem);
+	refContainer.innerHTML = '<div class="item reference">' + itemHTML(refItem) + "</div>";
 
 	console.log("Reference loaded");
 
@@ -30,16 +30,16 @@ function X(info) {
 	var recItems = info.data.recommendation;
 	var recommendations = "";
 	for (var i = 0; i < info.data.widget.size; i++) {
-		recommendations = recommendations + itemHTML(recItems[i]);
+		recommendations = recommendations + '<div class="item">' + itemHTML(recItems[i]) + "</div>";
 	}
 	carousel.innerHTML = recommendations;
 }
 
 function itemHTML(refItem) {
-	var html = `<div class="item"><img src="http:${refItem.imageName}"><a class="description" href="${refItem.detailUrl}">${refItem.name}</a>`
+	var html = `<img src="http:${refItem.imageName}"><a class="description" href="${refItem.detailUrl}">${refItem.name}</a>`
 	if (refItem.oldPrice != null) {
 		html = html + `<div class="oldprice">De: ${refItem.oldPrice}</div>`;
 	}
-	html = html + `<div class="payment">Por: <div class="price">${refItem.price}</div> <br> ${refItem.productInfo.paymentConditions}</div></div>`;
+	html = html + `<div class="payment">Por: <div class="price">${refItem.price}</div> <br> ${refItem.productInfo.paymentConditions}</div>`;
 	return html;
 }
