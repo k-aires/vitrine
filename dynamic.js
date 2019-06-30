@@ -47,20 +47,13 @@ function itemHTML(refItem) {
 	return html;
 }
 
-function getNextRecommendations() {
-	var start = (buttonCount-1)*carouselSize;
-	var finish = buttonCount*carouselSize;
-	if (recSize < finish) {
-		finish = recSize;
-	}
+function getRecommendations() {
+	var move = buttonCount*300;
+	console.log(move);
 
-	for (var i = start+1; i <= finish; i++) {
+	for (var i = 1; i <= recSize; i++) {
 		var item = document.getElementsByClassName("item")[i];
-		item.style.width = 0;
-		setTimeout(function(item){
-			item.style.display = "none";
-			console.log("Display = none");
-		},1000,item);
+		item.style.transform = `translateX(-${move}%)`;
 	}
 }
 
@@ -71,19 +64,17 @@ function setEventListeners() {
 
 function movePrev() {
 	if (buttonCount > 1) {
-		buttonCount--;
-	} else {
-		buttonCount = (recSize%carouselSize)+1;
+		buttonCount -= 2;
+		getRecommendations();
+		buttonCount++;
+		console.log(buttonCount);
 	}
-	console.log(buttonCount);
-	getRecommendations();
 }
 
 function moveNext() {
-	if (buttonCount*carouselSize >= recSize) {
-		buttonCount = 0;
+	if (buttonCount*carouselSize < recSize) {
+		getRecommendations();
+		buttonCount++;
+		console.log(buttonCount);
 	}
-	console.log(buttonCount);
-	getNextRecommendations();
-	buttonCount++;
 }

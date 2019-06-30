@@ -72,9 +72,10 @@
 	padding: 1%;
 	width: 25%;
 	vertical-align: top;
-	transition: width 1s ease-in-out;
+	transition: all 1s ease-in-out;
 	overflow: hidden;
 	text-align: center;
+	box-sizing: border-box;
 }
 
 .item:hover {
@@ -87,8 +88,10 @@
 	display: block;
 	font-size: 80%;
 	overflow: hidden;
+	white-space: normal !important;
 	text-overflow: ellipsis;
-	white-space: nowrap;
+	height: 3.9em;
+	text-align: left;
 }
 
 .description:hover {
