@@ -75,10 +75,12 @@
 .price {
 	display: inline-block;
 	font-weight: 500;
+	font-size: 110%;
 }
 
 .payment {
 	color: red;
+	font-size: 90%;
 }
 
 .oldprice {

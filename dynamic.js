@@ -1,4 +1,4 @@
-document.body.onload = initialConfig();
+window.onload = initialConfig();
 
 function initialConfig() {
 	var url = "http://roberval.chaordicsystems.com/challenge/challenge.json?callback=X"
@@ -8,7 +8,7 @@ function initialConfig() {
 	scriptElement.setAttribute("id", "jsonp");
 
 	var oldScriptElement = document.getElementById("jsonp");
-	var head = document.getElementById("head")[0];
+	var head = document.getElementsByTagName("head")[0];
 
 	if (oldScriptElement == null) {
 		head.appendChild(scriptElement);
@@ -17,10 +17,11 @@ function initialConfig() {
 	}
 }
 
-function X() {
+function X(info) {
+	console.log(info.data.widget.size);
 }
 
 function itemHTML(name,imageName,detailUrl,price,oldPrice,productInfo) {
-	var html = `<div class="item"><img src="${imageName}"><a class="description" href="${detailUrl}">${name}</a><div class="oldprice">De: ${oldPrice}</div><div class="payment">Por: <div class="price">${price}</div> <br> ${productInfo}</div></div>`;
+	var html = `<div class="item"><img src="http:${imageName}"><a class="description" href="${detailUrl}">${name}</a><div class="oldprice">De: ${oldPrice}</div><div class="payment">Por: <div class="price">${price}</div> <br> ${productInfo}</div></div>`;
 	return html;
 }
