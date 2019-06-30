@@ -28,7 +28,7 @@ function X(info) {
 
 	var carousel = document.getElementById("recommendationCarousel");
 	var recItems = info.data.recommendation;
-	var recommendations = "";
+	var recommendations = '';
 	for (var i = 0; i < info.data.widget.size; i++) {
 		recommendations = recommendations + '<div class="item">' + itemHTML(recItems[i]) + "</div>";
 	}
