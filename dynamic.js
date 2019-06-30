@@ -19,9 +19,27 @@ function initialConfig() {
 
 function X(info) {
 	console.log(info.data.widget.size);
+	
+	var refContainer = document.getElementById("referenceContainer");
+	var refItem = info.data.reference.item;
+	refContainer.innerHTML = itemHTML(refItem);
+
+	console.log("Reference loaded");
+
+	var carousel = document.getElementById("recommendationCarousel");
+	var recItems = info.data.recommendation;
+	var recommendations = "";
+	for (var i = 0; i < info.data.widget.size; i++) {
+		recommendations = recommendations + itemHTML(recItems[i]);
+	}
+	carousel.innerHTML = recommendations;
 }
 
-function itemHTML(name,imageName,detailUrl,price,oldPrice,productInfo) {
-	var html = `<div class="item"><img src="http:${imageName}"><a class="description" href="${detailUrl}">${name}</a><div class="oldprice">De: ${oldPrice}</div><div class="payment">Por: <div class="price">${price}</div> <br> ${productInfo}</div></div>`;
+function itemHTML(refItem) {
+	var html = `<div class="item"><img src="http:${refItem.imageName}"><a class="description" href="${refItem.detailUrl}">${refItem.name}</a>`
+	if (refItem.oldPrice != null) {
+		html = html + `<div class="oldprice">De: ${refItem.oldPrice}</div>`;
+	}
+	html = html + `<div class="payment">Por: <div class="price">${refItem.price}</div> <br> ${refItem.productInfo.paymentConditions}</div></div>`;
 	return html;
 }
