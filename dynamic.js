@@ -1,5 +1,5 @@
 window.onload = initialConfig();
-var carouselSize = 4;
+var carouselSize = 3;
 var buttonCount, carousel, recSize, recItems;
 
 function initialConfig() {
@@ -31,7 +31,11 @@ function X(info) {
 	buttonCount = 1;
 	setEventListeners();
 
-	getRecommendations();
+	var recommendations = '';
+	for (var i = 0; i < recSize; i++) {
+		recommendations = recommendations + '<div class="item">' + itemHTML(recItems[i]) + '</div>';
+	}
+	carousel.innerHTML = recommendations;
 }
 
 function itemHTML(refItem) {
@@ -43,18 +47,21 @@ function itemHTML(refItem) {
 	return html;
 }
 
-function getRecommendations() {
-	var size = buttonCount*carouselSize;
-	if (recSize < size) {
-		size = recSize;
+function getNextRecommendations() {
+	var start = (buttonCount-1)*carouselSize;
+	var finish = buttonCount*carouselSize;
+	if (recSize < finish) {
+		finish = recSize;
 	}
 
-	var recommendations = '';
-	for (var i = (buttonCount-1)*carouselSize; i < size; i++) {
-		recommendations = recommendations + '<div class="item">' + itemHTML(recItems[i]) + "</div>";
+	for (var i = start+1; i <= finish; i++) {
+		var item = document.getElementsByClassName("item")[i];
+		item.style.width = 0;
+		setTimeout(function(item){
+			item.style.display = "none";
+			console.log("Display = none");
+		},1000,item);
 	}
-
-	carousel.innerHTML = recommendations;
 }
 
 function setEventListeners() {
@@ -73,11 +80,10 @@ function movePrev() {
 }
 
 function moveNext() {
-	if (buttonCount*carouselSize < recSize) {
-		buttonCount++;
-	} else {
-		buttonCount = 1;
+	if (buttonCount*carouselSize >= recSize) {
+		buttonCount = 0;
 	}
 	console.log(buttonCount);
-	getRecommendations();
+	getNextRecommendations();
+	buttonCount++;
 }

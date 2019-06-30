@@ -72,6 +72,9 @@
 	padding: 1%;
 	width: 25%;
 	vertical-align: top;
+	transition: width 1s ease-in-out;
+	overflow: hidden;
+	text-align: center;
 }
 
 .item:hover {
@@ -123,6 +126,7 @@
 	overflow: hidden;
 	width: 95%;
 	transform-style: preserve-3d;
+	text-align: left;
 }
 
 .whitebox {
