@@ -120,3 +120,13 @@
 	overflow: hidden;
 	width: 95%;
 }
+
+.whitebox {
+	height: 100%;
+	background: white;
+	z-index: 500;
+	filter: blur(4px);
+	width: 5%;
+	position: absolute;
+	right: 0;
+}
