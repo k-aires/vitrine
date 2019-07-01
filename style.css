@@ -1,5 +1,8 @@
+/* importa fonte usada */
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,500&display=swap');
 
+/* css geral
+ **/
 .showcase {
 	padding: 1%;
 	width: 68%;
@@ -23,34 +26,8 @@
 	float: right;
 }
 
-.arrow:hover {
-	filter: none;
-	transition: filter 1s ease-in-out;
-}
-
-.arrow {
-	filter: grayscale(100%);
-	transition: filter 1s ease-in-out;
-}
-
-.arrowbox--right, .arrowbox--left {
-	z-index: 1000;
-	display: inline-block;
-	vertical-align: middle;
-	top: 30%;
-	position: absolute;
-	width: 5%;
-}
-
-.arrowbox--right {
-	right: 0;
-}
-
-.arrowbox--left {
-	transform: rotate(180deg);
-	left: 0;
-}
-
+/* css do título
+ **/
 .title {
 	color: #47789d;
 	background-image: url(assets/titlebar.png);
@@ -65,6 +42,9 @@
 	font-size: 120%;
 }
 
+/* css do item
+ * involve todas as coisas aninhadas em item
+ **/
 .item {
 	background: none;
 	display: inline-block;
@@ -114,6 +94,38 @@
 	font-size: 90%;
 }
 
+/* css para as flechas de movimentação no carousel
+ **/
+.arrow:hover {
+	filter: none;
+	transition: filter 1s ease-in-out;
+}
+
+.arrow {
+	filter: grayscale(100%);
+	transition: filter 1s ease-in-out;
+}
+
+.arrowbox--right, .arrowbox--left {
+	z-index: 1000;
+	display: inline-block;
+	vertical-align: middle;
+	top: 30%;
+	position: absolute;
+	width: 5%;
+}
+
+.arrowbox--right {
+	right: 0;
+}
+
+.arrowbox--left {
+	transform: rotate(180deg);
+	left: 0;
+}
+
+/* css para o carousel em si e decorações
+ **/
 .carousel-wrapper {
 	overflow: hidden;
 	border-left: solid 1px #eee;
@@ -132,12 +144,19 @@
 	text-align: left;
 }
 
-.whitebox {
+.whitebox--left, .whitebox--right {
 	height: 100%;
 	background: white;
 	z-index: 500;
 	filter: blur(4px);
 	width: 5%;
 	position: absolute;
+}
+
+.whitebox--left {
+	left: 0;
+}
+
+.whitebox--right {
 	right: 0;
 }
